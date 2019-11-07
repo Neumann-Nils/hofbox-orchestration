@@ -8,9 +8,9 @@ In modernen Infrastrukturen erlauben es containerbasierte Technologien, Anwendun
 Es muss dem Landwirt auf eine einfache Art und Weise ermöglicht werden, in einem einheitlichen Prozess neue Anwendungen zu installieren und den Status seines aktuellen Clusters zu überwachen. Ziel dieser Arbeit ist daher die Konzeption und Entwicklung einer solchen Orchestrationslösung, welche es fachfremden Anwendern ermöglicht, lokale und containerbasierte Anwendungen auf eigenen (Edge-)Servern zu betreiben und den Gesundheitsstatus des Clusters zu überwachen. Dabei steht vor allem die Benutzbarkeit durch nicht technisch-versierte Anwender im Fokus. Daher soll die Anwendung einfach und intuitiv zu bedienen sein und den Benutzer nicht mit technischen Details überfordern.
 
 ## Projektübersicht
+To-Do:
 
+In dem Ordner [docs](/docs/) werden alle wichtigen Dokumente und Informationen gesammelt.
 
 ## Credits
 Dieses Projekt wurde im Rahmen des Praktikums "Verantwortung und Sicherheit in der Informatik" bzw. Projektpraktikums "Interaktive resiliente Informationstechnik" im Wintersemester 2019/2020 an der TU Darmstadt von Kevin Küchler und Nils Neumann erstellt.
-
-Oberfläche für Management &amp; Monitoring für containerbasierte Anwendungen auf einem (Edge-)Server
