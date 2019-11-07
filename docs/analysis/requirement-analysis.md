@@ -13,7 +13,9 @@ Ziel ist die Konzeption und Entwicklung einer solchen Orchestrationslösung, wel
 
 ## Mock-Ups
 **Übersichtsseite**
-![](../images/mockup_overview.png)
+
+<img src="../images/mockup_overview.png"  width="60%">
 
 **Container/Pod Detailseite**
-![](../images/mockup_pod.png)
+
+<img src="../images/mockup_pod.png"  width="60%">
