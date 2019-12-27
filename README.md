@@ -8,9 +8,14 @@ In modernen Infrastrukturen erlauben es containerbasierte Technologien, Anwendun
 Es muss dem Landwirt auf eine einfache Art und Weise ermöglicht werden, in einem einheitlichen Prozess neue Anwendungen zu installieren und den Status seines aktuellen Clusters zu überwachen. Ziel dieser Arbeit ist daher die Konzeption und Entwicklung einer solchen Orchestrationslösung, welche es fachfremden Anwendern ermöglicht, lokale und containerbasierte Anwendungen auf eigenen (Edge-)Servern zu betreiben und den Gesundheitsstatus des Clusters zu überwachen. Dabei steht vor allem die Benutzbarkeit durch nicht technisch-versierte Anwender im Fokus. Daher soll die Anwendung einfach und intuitiv zu bedienen sein und den Benutzer nicht mit technischen Details überfordern.
 
 ## Projektübersicht
-To-Do:
+In dem Ordner [docs](/docs/) werden alle wichtigen Dokumente und Informationen gesammelt. Darunter befinden sich folgende Dokuente:
+- [Anforderungsanalyse](/docs/analysis/requirement-analysis.md)
+- [Anwendungsfälle](/docs/analysis/use-cases.md)
+- [Analyse bestehender Orchestrationslösungen](/docs/analysis/solution-analysis.md)
+- [Analyse bezüglich des Übergangs in den Experten-Modus](/docs/analysis/expert-mode.md)
+- [Analyse des Grading-Systems](/docs/analysis/grading-system.md)
 
-In dem Ordner [docs](/docs/) werden alle wichtigen Dokumente und Informationen gesammelt.
+Im Ordner [patch](/patch/) befindet sich die eigentlich Orchestrationslösung und eine [Anleitung](/patch/installation.md), um diese zu installieren.
 
 ## Credits
 Dieses Projekt wurde im Rahmen des Praktikums "Verantwortung und Sicherheit in der Informatik" bzw. Projektpraktikums "Interaktive resiliente Informationstechnik" im Wintersemester 2019/2020 an der TU Darmstadt von Kevin Küchler und Nils Neumann erstellt.
