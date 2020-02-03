@@ -11,6 +11,7 @@ Die Bewertung der CPU-Auslastung erfolgt über drei Zeiträume:
  - Auslastung der letzten 60 Sekunden
  - Auslastung der letzten 5 Minuten
  - Auslastung der letzten 15 Minute
+
 Diese drei Zeiträume werden in betracht gezogen, um kurzzeitige Auslastungsspitzen, z.B. durch das Laden der Seite oder anderweitigen Ereignissen, in der Bewertung abzufedern. Ein sich ständig verändernder Wert durch solche Auslastungsspitzen kann den Benutzer verunsichern, obwohl das System einwandfrei funktioniert.
 Solange die CPU-Auslastung unter 50% liegt ist alles in Ordnung, da dem System noch das Doppelte der momentan genutzten Rechenleistung zu Verfügung steht. Ab >50% CPU-Auslastung steigt die Wertung langsam an. Für eine Auslastung über 50% in den letzten 60 Sekunden können maximal 150 von 600 Punkten gesammelt werden. Liegt die CPU-Auslastung bereits seit 5 Minuten über 50%, wird dieser Wert verdoppelt, es können also maximal 300 von 600 Punkten gesammelt werden. Liegt die CPU-Auslastung nun mehr als 15 Minuten über 50% wird der Wert insgesammt vervierfacht, es können also bis zu 600 Punkte gesammelt werden. 600 Punkte können nur dann erreicht werden, wenn die CPU-Auslastung in den letzten 15 Minuten dauerhaft über 90% lag.
 
