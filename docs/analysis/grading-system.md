@@ -77,7 +77,7 @@ Die letzendliche Abstufung erfolgt in 5-Punkte-Schirtten. Das Bewerungssystem be
 | E | 50-59 |
 | F | <50 |
 
-## Anmerkungne
+## Anmerkungen
 Anpassungen am Bewertungsalgorithmus können in der Datei `app/docker/helpers/gradingHelper.js` gemacht werden.
 
 Verwendete Ressourcen sind unter anderem:
