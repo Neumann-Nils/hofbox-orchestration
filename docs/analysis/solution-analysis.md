@@ -14,8 +14,9 @@ Mit Cockpit lässt sich der Systemspeicher gut verwalten und auch Netzwerkressou
 Mit dem Docker-Plugin lassen sich Docker-Container erstellen und verwalten. Es ist möglich aus dem DockerHub Images herunterzuladen. Neue Images müssen entweder auf DockerHub hochgeladen oder lokal erstellt werden.
 
 ## [Portainer](https://github.com/portainer/portainer)
-Portainer zielt auf die Verwaltung von Docker-Umgebungen ab. Es bietet die Möglichkeit lokale, als auch entfernte Docker Instanzen zu verwalten.
-Die leichte und gut strukturierte Weboberfläche bietet dem Nutzer einen schnellen Überblick über seine Cluster.
+Portainer zielt auf die Verwaltung von Docker-Umgebungen ab. Es bietet die Möglichkeit lokale, als auch entfernte Docker Instanzen zu verwalten. Die leichte und gut strukturierte Weboberfläche bietet dem Nutzer einen schnellen Überblick über seine Cluster. Weiterhin erlaubt Portainer das Benutzen einer lokalen Image-Registry und das Verwalten von Backups.
 
 ## Fazit
-To-Do
+Zusammenfassend sind Gardener und Rancher nicht für die geplante Orchestrationslösung geeignet. Gardner bietet nur die Möglichkiet Cluster bei Cloud-Dienstleistern zu erstellen und Rancher braucht zu viele Ressourcen, um es auf einen Rasberry Pi laufen zu lassen.
+
+Im Vergleich zwischen Cockpit Project und Portainer haben wir uns für Portainer entschieden, da es die Möglichkeiten zur Benutzung einer lokalen Image-Registry bietet und auch das Verwalten von Backups nativ unterstützt.
