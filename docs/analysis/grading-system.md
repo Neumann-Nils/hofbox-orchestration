@@ -30,4 +30,58 @@ Das alphabetiche Bewertungssystem hat einen entscheidenden Vorteil; es bietet ei
 ## Fazit
 Zusammenfassend bietet das numerische Bewertungssystem eine bessere Granularität und Linearität. Für fachfremde Nutzer sind diese Eigenschaften von geringer Bedeutung. Wichtiger ist die Verständlichkeit, welche bei einem alphabetischen Bewertungsssytem im Vordergrund steht.
 
-Daher ist es sinnvoll, ein alphabetisches Bewertungssystem zu verwenden, welches beispielsweise mit Zwischenwerten (z.B. `B+`) arbeitet und durch fabliche Noancen den Bewertungscharakter der einzelnen Stufen verdeutlicht. 
+Daher ist es sinnvoll, ein alphabetisches Bewertungssystem zu verwenden, welches beispielsweise mit Zwischenwerten (z.B. `B+`) arbeitet und durch fabliche Noancen den Bewertungscharakter der einzelnen Stufen verdeutlicht.
+
+# Implementierung eines Bewertungssystems
+Im folgenden beschreiben wir die Implementierungsentscheidungen unseres Bewertungssystems. Das Bewertungssystem für den allgemeinen Systemzustand unterteilt sich in vier Komponenten:
+1. Bewertung der einzelnen Komponenten (CPU-Temperatur, CPU-Auslastung, RAM-Auslastung, Speicherbelegung)
+2. "Bewertungsfaktor", welcher die Gewichtung der Bewertung einzelner Komponente in der Gesamtwertung definiert
+3. Umrechnung vom Wertebereich `0 - 600` (wobei `0` der beste und `600` der schlechteste Wert ist) in den Wertebereich `0 - 100` (wobei `100` der beste und `0` der schlechteste Wert ist)
+4. Definition der Abstufungen von `A+` bis `F` (wobei `A+` der beste und `F` der schlechteste Wert ist)
+
+## Bewertung einzelner Komponenten
+Die Bewertung der **CPU-Auslastung** erfolgt über drei Zeiträume:
+- Auslastung der letzten 60 Sekunden
+- Auslastung der letzten 5 Minuten
+- Auslastung der letzten 15 Minute
+
+Diese drei Zeiträume werden betrachtet, um kurzzeitige Auslastungsspitzen (z.B. durch das Laden der Seite) in der Bewertung abzufedern. Ein sich ständig verändernder Wert durch solche Auslastungsspitzen kann den Benutzer verunsichern. Eine CPU-Auslastung unter 50% wird als unkritisch betrachtet, da dem System noch mehr als die Hälfte der Rechenleistung zu Verfügung steht. Ab 50% CPU-Auslastung steigt die Wertung langsam an. Für eine Auslastung über 50% in den letzten 60 Sekunden können maximal 150 von 600 Punkten gesammelt werden. Liegt die CPU-Auslastung bereits seit 5 Minuten über 50%, wird dieser Wert verdoppelt (es können also maximal 300 von 600 Punkten gesammelt werden). Liegt die CPU-Auslastung nun mehr als 15 Minuten über 50% wird der Wert insgesammt vervierfacht (es können also bis zu 600 Punkte gesammelt werden). 600 Punkte können nur dann erreicht werden, wenn die CPU-Auslastung in den letzten 15 Minuten dauerhaft über 90% lag.
+
+Die normale Betriebstemperatur (**CPU-Temperatur**) eines Raspberry Pi's liegt zwischen 50-60°C. Wir haben uns dazu entschieden, mit der Wertung ab einer Temperatur von 55°C zu beginnen. In 5°C-Schritte steigt nun der Wert, bis er bei mehr als 85°C den Maximalwert von 600 Punkten erreicht hat. Eine CPU-Temperatur von mehr als 85°C wird als bedenklich erachtet. Trotz bestehender Schutzmechanismen sollte der Nutzer dringend Maßnahmen ergreifen, um die CPU-Temperatur zu senken. Hohe Hardware-Temperaturen verkürzen deren Lebendauer.
+
+Die Bewertung der **RAM-Auslastung** ist wie folgt definert: Ab >50% Auslastung steigt die Wertung zuerst linear an. Je höher die Auslastung, desto schneller steigt die Wertung an. Dieses Steigungsverhalten ist sinnvoll, da der Arbeitsspeicher eine signifikante Rolle in einem Computersystem hat. Steht nicht genügend Arbeitsspeicher zur Verfügung, können Prozesse nicht mehr richtig arbeiten.
+
+Die Bewertung der **Speicherbelegung** erfolgt nach dem gleichen Schema: Ab einer Auslastung über 50% steigt die Wertung zuerst linear an. Im Unterschied zur Bewertung der RAM-Auslastung, steigt die Wertung erst ab >90% sehr stark. Festplattenspeicher wächst unter normalen Umständen nicht rasant an und ist meist auch in größeren Kapazitäten vorhanden, wodurch der prozentuale Anteil der Auslastung wesentlich mehr Speicher repräsentiert.
+
+## "Bewertungsfaktor"
+Für jede Bewertung existiert ein eigener Bewertungsfaktor. Dieser bestimmt, wie stark die jeweilige Bewertung in die Gesamtwertung des Sytems einfließt. Dieser Bewertungsfaktor liegt typischerweise zwischen `0` (0%) und `1` (100%). Vor der Konvertierung in den Wertebereich `0 - 100` wird jede einzelne Bewertung mit ihrem Bewertungsfaktor multipliziert.
+
+## Umrechnung vom Wertebereich
+Die Umrechnung aus dem Wertebereicht `0 - 600` in `0 - 100` erfolgt nach folgender Formel:
+```
+100 - ((Wertung / (600 * (cpuGradingFactor + ramGradingFactor + diskGradingFactor + temperatureGradingFactor))) * 100)
+```
+
+## Umwandlung in ein alphabetisches Bewertungssystem
+Die letzendliche Abstufung erfolgt in 5-Punkte-Schirtten. Das Bewerungssystem beginnt bei ´A+´ und endet bei `F`:
+
+| Grade | Score |
+|-------|--------|
+| A+ | 95-100 |
+| A | 94-90 |
+| B+ | 85-89 |
+| B | 80-84 |
+| C+ | 75-59 |
+| C | 70-74 |
+| D | 60-69 |
+| E | 50-59 |
+| F | <50 |
+
+## Anmerkungne
+Anpassungen am Bewertungsalgorithmus können in der Datei `app/docker/helpers/gradingHelper.js` gemacht werden.
+
+Verwendete Ressourcen sind unter anderem:
+- CPU temperature for Raspberry Pi (=> Normal: ~50°C, critical: >85°C)
+  - https://linuxhint.com/raspberry_pi_temperature_monitor/
+  - https://www.raspberrypi.org/forums/viewtopic.php?t=243500
+ 
