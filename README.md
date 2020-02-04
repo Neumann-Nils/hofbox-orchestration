@@ -13,7 +13,7 @@ In dem Ordner [docs](/docs/) werden alle wichtigen Dokumente und Informationen g
 - [Anwendungsfälle](/docs/analysis/use-cases.md)
 - [Analyse bestehender Orchestrationslösungen](/docs/analysis/solution-analysis.md)
 - [Analyse bezüglich des Übergangs in den Experten-Modus](/docs/analysis/expert-mode.md)
-- [Analyse des Bewertungssystems](/docs/analysis/grading-system.md)
+- [Analyse und Implementation des Bewertungssystems](/docs/analysis/grading-system.md)
 
 Im Ordner [patch](/patch/) befindet sich die eigentlich Orchestrationslösung und eine [Anleitung](/patch/installation.md), um diese zu installieren.
 
