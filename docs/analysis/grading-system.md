@@ -71,7 +71,7 @@ Die letzendliche Abstufung erfolgt in 5-Punkte-Schirtten. Das Bewerungssystem be
 | A | 94-90 |
 | B+ | 85-89 |
 | B | 80-84 |
-| C+ | 75-59 |
+| C+ | 75-79 |
 | C | 70-74 |
 | D | 60-69 |
 | E | 50-59 |
