@@ -15,7 +15,7 @@ In dem Ordner [docs](/docs/) werden alle wichtigen Dokumente und Informationen g
 - [Analyse bezüglich des Übergangs in den Experten-Modus](/docs/analysis/expert-mode.md)
 - [Analyse und Implementation des Bewertungssystems](/docs/analysis/grading-system.md)
 
-Im Ordner [patch](/patch/) befindet sich die eigentlich Orchestrationslösung und eine [Anleitung](/patch/installation.md), um diese zu installieren.
+Im Ordner [installation](/installation/) befindet sich die eigentlich Orchestrationslösung und eine [Anleitung](/installation/README.md), um diese zu installieren.
 
 ## Credits
 Dieses Projekt wurde im Rahmen des Praktikums "Verantwortung und Sicherheit in der Informatik" bzw. Projektpraktikums "Interaktive resiliente Informationstechnik" im Wintersemester 2019/2020 an der TU Darmstadt von Kevin Küchler und Nils Neumann erstellt.
