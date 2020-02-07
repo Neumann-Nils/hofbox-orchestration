@@ -46,6 +46,8 @@ $ ./patch.sh
 
 Es könnte sein, dass folgendes Problem auftritt: Bei der Anwendung des Patchs kann ein Fehler von yarn auftreten, dass das Verzeichnis 'build' nicht gefunden wurde.
 
+Lösung von StackOverflow: https://stackoverflow.com/questions/46013544/yarn-install-command-error-no-such-file-or-directory-install
+
 Lösung: Die Programme cmdtest und yarn entfernen, das offizielle yarn-Repository hinzufügen und yarn erneut installieren.
 
 $ sudo apt remove cmdtest
