@@ -39,3 +39,23 @@ Patch anwenden:
 $ cd portainer
 
 $ ./patch.sh
+
+
+
+# Mögliche Probleme und Lösungen:
+
+Es könnte sein, dass folgendes Problem auftritt: Bei der Anwendung des Patchs kann ein Fehler von yarn auftreten, dass das Verzeichnis 'build' nicht gefunden wurde.
+
+Lösung: Die Programme cmdtest und yarn entfernen, das offizielle yarn-Repository hinzufügen und yarn erneut installieren.
+
+$ sudo apt remove cmdtest
+
+$ sudo apt remove yarn
+
+$ curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+
+$ echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+
+$ sudo apt-get update
+
+$ sudo apt-get install yarn
